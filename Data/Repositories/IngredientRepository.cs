@@ -51,9 +51,9 @@ public class IngredientRepository : IIngredientRepository
 	public bool Update(Ingredient ingredient)
 	{
 		_logger.Trace($"attempt to UPDATE Ingredient {ingredient}");
-		if (!_context.Ingredients.Contains(ingredient))
+		if (_context.Ingredients.FirstOrDefault(i=>i.Id==ingredient.Id) == null)
 		{
-			_logger.Warn("No such ingredient in context");
+			_logger.Warn($"No ingredient with id {ingredient.Id} in context");
 			return false;
 		}
 		_context.Ingredients.Update(ingredient);
