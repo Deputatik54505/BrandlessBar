@@ -13,6 +13,7 @@ public class IngredientRepository : IIngredientRepository
 	public IngredientRepository(ApplicationDbContext context)
 	{
 		_context = context;
+		_logger.Debug("repository initialized");
 	}
 
 	public async Task<Ingredient?> Get(int id)

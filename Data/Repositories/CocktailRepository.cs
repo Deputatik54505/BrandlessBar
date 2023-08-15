@@ -11,6 +11,7 @@ public class CocktailRepository : ICocktailRepository
 	public CocktailRepository(ApplicationDbContext context)
 	{
 		_context = context;
+		_logger.Debug("repository initialized");
 	}
 
 	public async Task<Cocktail?> Get(int id)
@@ -35,7 +36,7 @@ public class CocktailRepository : ICocktailRepository
 	{
 		_logger.Trace($"attempt to CREATE Cocktail {cocktail}");
 
-		if (_context.Cocktails.Contains(cocktail))
+		if (_context.Cocktails.FirstOrDefault(c => c.Id == cocktail.Id) != null)
 		{
 			_logger.Warn($"cocktail with id {cocktail.Id} already in context");
 			return false;
