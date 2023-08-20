@@ -12,7 +12,7 @@ using brandlessBar.Data;
 namespace brandlessBar.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230812153652_initial")]
+    [Migration("20230820120308_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace brandlessBar.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.7")
+                .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
