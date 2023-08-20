@@ -13,7 +13,6 @@ public class IngredientController : Controller, IIngredientController
 {
 
 	private readonly IIngredientRepository _repository;
-	private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
 	public IngredientController(IIngredientRepository repository)
 	{
@@ -49,7 +48,7 @@ public class IngredientController : Controller, IIngredientController
 	[HttpPut]
 	[ProducesResponseType(204)]
 	[ProducesResponseType(400)]
-	public IActionResult Update(Ingredient ingredient)
+	public IActionResult Put(Ingredient ingredient)
 	{
 		if (_repository.Update(ingredient))
 		{
