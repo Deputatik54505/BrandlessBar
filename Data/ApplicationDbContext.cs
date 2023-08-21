@@ -9,10 +9,7 @@ namespace brandlessBar.Data
 		public DbSet<Alternative> Alternatives => Set<Alternative>();
 		public DbSet<Cocktail> Cocktails => Set<Cocktail>();
 		public DbSet<Ingredient> Ingredients => Set<Ingredient>();
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-			: base(options)
-		{
-		}
+		
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseNpgsql("User Id=postgres;Password=b1cJBQZ0e6BjaI06;Server=db.njuuzelhimoeiztijwvd.supabase.co;Port=5432;Database=postgres");
