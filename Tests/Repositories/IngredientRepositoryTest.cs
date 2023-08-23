@@ -13,7 +13,7 @@ namespace brandlessBar.Tests.Repositories;
 public class IngredientRepositoryTest
 {
 	[Fact]
-	public void Create_new_Ingredient()
+	public void Create_New_Ingredient()
 	{
 		var ingredient = new Ingredient("apple","fruit");
 		var context = new ApplicationDbContext();

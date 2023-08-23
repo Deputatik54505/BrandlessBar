@@ -20,7 +20,7 @@ namespace brandlessBar.Data
 			builder.Entity<Alternative>(a =>
 			{
 				a.HasKey(alt => alt.Id);
-
+				a.Property(alt => alt.Name).IsRequired();
 				a.HasMany(alt => alt.Ingredients)
 					.WithMany();
 
