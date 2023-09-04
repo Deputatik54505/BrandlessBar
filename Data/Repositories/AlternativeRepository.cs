@@ -21,13 +21,6 @@ public class AlternativeRepository : IAlternativeRepository
 		return await _context.Alternatives.FirstOrDefaultAsync(a => a.Id == id);
 	}
 
-	public async Task<Alternative?> Get(string preferableIngredient)
-	{
-		_logger.Trace($"attempt to GET Alternative by the name of preferable ingredient {preferableIngredient}");
-		return await _context.Alternatives.FirstOrDefaultAsync(
-			a => a.PreferableIngredient != null &&
-				 a.PreferableIngredient.Name.Equals(preferableIngredient));
-	}
 
 	public async Task<Alternative?> Get(Ingredient preferableIngredient)
 	{
