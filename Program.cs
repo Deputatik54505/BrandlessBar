@@ -1,4 +1,5 @@
 using brandlessBar.Data;
+using brandlessBar.Data.Models;
 using brandlessBar.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ApplicationDbContext>();
 
-builder.Services.AddScoped<ICocktailRepository,CocktailRepository>();
-builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
-builder.Services.AddScoped<IAlternativeRepository, AlternativeRepository>();
+builder.Services.AddScoped<IRepository<Cocktail>,Repository<Cocktail>>();
+builder.Services.AddScoped<IRepository<Alternative>, Repository<Alternative>>();
+builder.Services.AddScoped<IRepository<Ingredient>, Repository<Ingredient>>();
 
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();

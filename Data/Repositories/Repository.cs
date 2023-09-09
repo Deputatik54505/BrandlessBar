@@ -6,7 +6,7 @@ namespace brandlessBar.Data.Repositories;
 public class Repository<T> : IRepository<T> where T : SuperModel
 {
 	private readonly ApplicationDbContext _context;
-	private readonly DbSet<T> _entities; 
+	private readonly DbSet<T> _entities;
 
 	public Repository(ApplicationDbContext context)
 	{
@@ -27,18 +27,18 @@ public class Repository<T> : IRepository<T> where T : SuperModel
 	public bool Create(T entity)
 	{
 		_entities.Add(entity);
-		return _context.SaveChanges()>0;
+		return _context.SaveChanges() > 0;
 	}
 
 	public bool Update(T entity)
 	{
 		_entities.Update(entity);
-		return _context.SaveChanges()>0;
+		return _context.SaveChanges() > 0;
 	}
 
 	public bool Delete(T entity)
 	{
 		_entities.Remove(entity);
-		return _context.SaveChanges()>0;
+		return _context.SaveChanges() > 0;
 	}
 }

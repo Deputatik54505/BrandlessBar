@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Pages\Recipes\" />
     <Folder Include="Tests\Repositories\" />
   </ItemGroup>
 
