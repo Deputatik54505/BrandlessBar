@@ -8,6 +8,7 @@ public class Cocktail : SuperModel
 		Name = name;
 	}
 
+	public byte[] Picture { get; set; }
 	public string Name { get; set; }
 	public string? Description { get; set; }
 	public List<Alternative>? Alternatives { get; set; }

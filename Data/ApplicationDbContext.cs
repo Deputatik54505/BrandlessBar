@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace brandlessBar.Data
 {
+
+	//todo: make tables look better
 	public class ApplicationDbContext : IdentityDbContext
 	{
 		public DbSet<Alternative> Alternatives => Set<Alternative>();
@@ -34,6 +36,8 @@ namespace brandlessBar.Data
 				c.Property(cock => cock.Name).IsRequired();
 
 				c.Property(cock => cock.Description);
+
+				c.Property(cock => cock.Picture);
 
 				c.HasMany(cock => cock.Alternatives).WithMany();
 

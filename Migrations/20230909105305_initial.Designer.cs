@@ -12,8 +12,8 @@ using brandlessBar.Data;
 namespace brandlessBar.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230823065832_NamePropertyForAlternative")]
-    partial class NamePropertyForAlternative
+    [Migration("20230909105305_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
