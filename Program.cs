@@ -2,20 +2,19 @@ using brandlessBar.Data;
 using brandlessBar.Data.Models;
 using brandlessBar.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 
 // Add services to the container.
-builder.Services.AddControllers();
-
 builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddScoped<IRepository<Cocktail>,Repository<Cocktail>>();
 builder.Services.AddScoped<IRepository<Alternative>, Repository<Alternative>>();
 builder.Services.AddScoped<IRepository<Ingredient>, Repository<Ingredient>>();
+
+builder.Services.AddControllers();
 
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -24,6 +23,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -38,14 +38,13 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
-	
-	
-	//app.UseMigrationsEndPoint();
+
+
+	app.UseMigrationsEndPoint();
 }
 else
 {
 	app.UseExceptionHandler("/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
 
@@ -56,6 +55,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.MapControllerRoute(
+	name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id?}");
+
+//app.MapRazorPages();
 
 app.Run();

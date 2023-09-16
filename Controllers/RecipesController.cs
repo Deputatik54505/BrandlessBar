@@ -1,12 +1,13 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using brandlessBar.Data.Models;
+﻿using brandlessBar.Data.Models;
 using brandlessBar.Data.Repositories;
 using brandlessBar.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace brandlessBar.Controllers;
 
-[Controller]
+
+[Route("api/[controller]")]
+[ApiController]
 public class RecipesController : Controller
 {
 	private readonly IRepository<Cocktail> _repository;
@@ -17,22 +18,26 @@ public class RecipesController : Controller
 	}
 
 
+
 	[HttpGet]
-	public IActionResult Index()
+	[Route("getAll")]
+	public IActionResult GetAll()
 	{
-		return View(_repository.GetAll().Result);
+		return Ok(_repository.GetAll().Result);
 	}
 
-
 	[HttpPost]
-	[ProducesResponseType(204)]
-	public IActionResult Create([FromBody] Cocktail cocktail, Image? picture)
+	[Route("create")]
+	public IActionResult Create([FromBody] Cocktail cocktail,[FromForm] Image? picture)
 	{
-		if (picture != null)
+		if (picture !=null)
+		{
 			cocktail.Picture = ImageUtils.ImageToByteArray(picture);
+		}
 
 		_repository.Create(cocktail);
-		return Ok();
+
+		return View();
 	}
 
 }

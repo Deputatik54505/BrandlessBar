@@ -2,9 +2,8 @@
 
 public class Cocktail : SuperModel
 {
-	public Cocktail(int id, string name)
+	public Cocktail(string name)
 	{
-		Id = id;
 		Name = name;
 	}
 

@@ -1,6 +1,39 @@
-﻿@using brandlessBar.Data.Models
+﻿@using brandlessBar.Data.Repositories
+@using brandlessBar.Data.Models
+@using brandlessBar.Utils
+
+
+@inject IRepository<Cocktail> Repository
+
 @{
-	Cocktail cocktail;
+	List<Alternative> alternatives;
+	List<Alternative>? optionalAlternatives;
+	string? description;
+	string name ;
+	Image picture;
+
+	void submit()
+	{
+		if (name == null)
+		{
+			//todo: user should enter cocktail name
+		}
+		if (alternatives == null)
+		{
+			//todo: user should enter ingredients
+		}
+
+		Cocktail cocktail = new Cocktail(name) {
+			Alternatives = alternatives,
+			OptionalAlternatives = optionalAlternatives,
+			Description = description
+		};
+
+		if (picture != null)
+		{
+			cocktail.Picture = ImageUtils.ImageToByteArray(picture);
+		}
+	}
 }
 
 <!DOCTYPE html>
@@ -10,16 +43,32 @@
 	<title></title>
 </head>
 <body>
-<div>
+	<div>
 
-	<div class="col">
-		<div class="card shadow-sm">
-			
-			<a></a>
-			
+		<div class="col">
+			<div class="card shadow-sm">
 
+				<div class="col-sm-6">
+					<label for="name" class="form-label">Cocktail Name</label>
+					<input type="text" class="form-control" id="name" placeholder="" value="" required="">
+					<div class="invalid-feedback">
+						Valid name is required.
+					</div>
+				</div>
+
+
+
+				<div class="col-auto d-none d-lg-block">
+					<svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false">
+						<title>Placeholder</title>
+						<rect width="100%" height="100%" fill="#55595c"></rect>
+						<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+					</svg>
+
+				</div>
+
+			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
