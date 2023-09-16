@@ -28,7 +28,7 @@ public class RecipesController : Controller
 
 	[HttpPost]
 	[Route("create")]
-	public IActionResult Create([FromBody] Cocktail cocktail,[FromForm] Image? picture)
+	public IActionResult Create([FromBody] Cocktail cocktail,[FromForm] Image? picture = null)
 	{
 		if (picture !=null)
 		{

@@ -26,10 +26,10 @@ public class IngredientController : Controller
 
 	[HttpPost]
 	[Route("create")]
-	public IActionResult Create([FromBody]Ingredient ingredient, [FromForm]Image? picture)
+	public IActionResult Create([FromBody]Ingredient ingredient)
 	{
-
+		//TODO: make it possible to attach a picture of ingredient
 		_repository.Create(ingredient);
-		return View();
+		return Ok(ingredient);
 	}
 }
