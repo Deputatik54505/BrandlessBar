@@ -5,8 +5,8 @@ namespace brandlessBar.Data.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class, ISuperModel
 {
-	private readonly ApplicationDbContext _context;
-	private readonly DbSet<T> _entities;
+	protected readonly ApplicationDbContext _context;
+	protected readonly DbSet<T> _entities;
 
 	public Repository(ApplicationDbContext context)
 	{

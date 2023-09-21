@@ -6,11 +6,11 @@ namespace brandlessBar.Controllers
 {
 	[ApiController]
 	[Route("api/[controller]")]
-	public class SearchController <T> : Controller where T : ISearchable
+	public class SearchController <T> : Controller where T : class, ISearchable
 	{
-		private readonly IRepository<T> _repository;
+		private readonly SearchableRepository<T> _repository;
 
-		public SearchController(IRepository<T> repository)
+		public SearchController(SearchableRepository<T> repository)
 		{
 			_repository = repository;
 		}
@@ -18,6 +18,10 @@ namespace brandlessBar.Controllers
 
 		public IActionResult Search(string searchString)
 		{
+			List<T> firstPriority = new List<T>();
+			List<T> secondPriority = new List<T>();
+			
+
 			return null;
 		}
 	}
