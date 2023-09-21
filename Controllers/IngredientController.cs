@@ -1,4 +1,6 @@
-﻿using brandlessBar.Data.Models;
+﻿using AutoMapper;
+using brandlessBar.Data.Dto;
+using brandlessBar.Data.Models;
 using brandlessBar.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +12,13 @@ public class IngredientController : Controller
 {
 
 	private readonly IRepository<Ingredient> _repository;
+	private readonly IMapper _mapper;
 
-	public IngredientController(IRepository<Ingredient> repository)
+
+	public IngredientController(IRepository<Ingredient> repository, IMapper mapper)
 	{
 		_repository = repository;
+		_mapper = mapper;
 	}
 
 
@@ -26,10 +31,11 @@ public class IngredientController : Controller
 
 	[HttpPost]
 	[Route("create")]
-	public IActionResult Create([FromBody]Ingredient ingredient)
+	public IActionResult Create([FromBody]IngredientDto ingredient)
 	{
 		//TODO: make it possible to attach a picture of ingredient
-		_repository.Create(ingredient);
+		
+		_repository.Create(_mapper.Map<Ingredient>(ingredient));
 		return Ok(ingredient);
 	}
 }

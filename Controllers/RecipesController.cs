@@ -1,4 +1,6 @@
-﻿using brandlessBar.Data.Models;
+﻿using AutoMapper;
+using brandlessBar.Data.Dto;
+using brandlessBar.Data.Models;
 using brandlessBar.Data.Repositories;
 using brandlessBar.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +13,12 @@ namespace brandlessBar.Controllers;
 public class RecipesController : Controller
 {
 	private readonly IRepository<Cocktail> _repository;
+	private readonly IMapper _mapper;
 
-	public RecipesController(IRepository<Cocktail> repository)
+	public RecipesController(IRepository<Cocktail> repository, IMapper mapper)
 	{
 		_repository = repository;
+		_mapper = mapper;
 	}
 
 
@@ -28,14 +32,11 @@ public class RecipesController : Controller
 
 	[HttpPost]
 	[Route("create")]
-	public IActionResult Create([FromBody] Cocktail cocktail,[FromForm] Image? picture = null)
+	public IActionResult Create([FromBody] CocktailDto cocktail)
 	{
-		if (picture !=null)
-		{
-			cocktail.Picture = ImageUtils.ImageToByteArray(picture);
-		}
+		//todo: allow add pictures.
 
-		_repository.Create(cocktail);
+		_repository.Create(_mapper.Map<Cocktail>(cocktail));
 
 		return View();
 	}
