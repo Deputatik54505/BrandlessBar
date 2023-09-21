@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace brandlessBar.Data.Repositories;
 
-public class Repository<T> : IRepository<T> where T : SuperModel
+public class Repository<T> : IRepository<T> where T : class, ISuperModel
 {
 	private readonly ApplicationDbContext _context;
 	private readonly DbSet<T> _entities;

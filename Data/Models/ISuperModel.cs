@@ -1,6 +1,6 @@
 ﻿namespace brandlessBar.Data.Models;
 
-public class SuperModel
+public interface ISuperModel
 {
 	public int Id { get; set; }
 }

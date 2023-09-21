@@ -1,11 +1,12 @@
 ﻿namespace brandlessBar.Data.Models;
 
-public class Cocktail : SuperModel
+public class Cocktail : ISuperModel, ISearchable
 {
 	public Cocktail(string name)
 	{
 		Name = name;
 	}
+	public int Id { get; set; }
 
 	public byte[] Picture { get; set; }
 	public string Name { get; set; }

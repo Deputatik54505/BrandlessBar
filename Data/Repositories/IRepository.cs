@@ -2,7 +2,7 @@
 
 namespace brandlessBar.Data.Repositories;
 
-public interface IRepository<T> where T : SuperModel
+public interface IRepository<T> where T : ISuperModel
 {
 	public Task<T?> Get(int id);
 	public Task<List<T>> GetAll();

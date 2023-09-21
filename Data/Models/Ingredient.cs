@@ -1,12 +1,13 @@
 ﻿namespace brandlessBar.Data.Models;
 
-public class Ingredient : SuperModel
+public class Ingredient : ISuperModel, ISearchable
 {
 	public Ingredient(string name, string type)
 	{
 		Name = name;
 		Type = type;
 	}
+	public int Id { get; set; }
 
 	public string Name { get; set; }
 	public string? Description { get; set; }
